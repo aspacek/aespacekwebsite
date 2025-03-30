@@ -1,0 +1,168 @@
+<! idl.html
+<! Alex Spacek's ASU website IDL HTML file
+<! Edited May 6 2015
+
+<!DOCTYPE html>
+<html>
+
+<font color="white">
+
+<head>
+	<title> Alex Spacek </title>
+
+	<style>
+		h3x { 
+    		display: block;
+    		font-size: 1.17em;
+    		margin-top: .1em;
+    		margin-bottom: .1em;
+    		margin-left: 0em;
+    		margin-right: 0em;
+    		font-weight: bold;
+		}
+
+		h1x {
+			display: block;
+			font-size: 4em;
+			margin-top: 0.37em;
+			margin-bottom: 0.2em;
+			margin-left: 0em;
+			margin-right: 0em;
+			font-weight: bold;
+		}
+
+		table { border-collapse: collapse; }
+
+		table, td, th { border: 2px solid gray; }
+
+		a { text-decoration: none; }
+
+	</style>
+</head>
+
+<body background="images/Grey-Background-BLANK.png">
+
+	<div align="center">
+		<img src="images/asu_sese.jpg" style="width:50%; margin-left:23.5%">
+		<img src="images/Spacek_Alex.jpg" style="width:9%; margin-left:14%">
+	</div>
+
+	<br>
+
+	<center>
+		<table border="1" style="width:100%; table-layout:fixed">
+			<tr>
+				<td> <center> <a href="./index.html" style="color:yellow">             Home            </a> </center> </td>
+				<td> <center> <a href="./research.html" style="color:#00FF00">         Research        </a> </center> </td>
+				<td> <center> <a href="./idl.html" style="color:yellow">               IDL             </a> </center> </td>
+				<td> <center> <a href="./science_writings.html" style="color:#00FF00"> Science Writing </a> </center> </td>
+				<td> <center> <a href="./music_writings.html" style="color:yellow">    Music           </a> </center> </td>
+				<td> <center> <a href="./links.html" style="color:#00FF00">            Links           </a> </center> </td>
+			</tr>
+		</table>
+	</center>
+
+	<center>
+		<table border="1" style="width:100%; table-layout:fixed">
+			<tr>
+				<td> <center> <a href="./about_me.html" style="color:#00FF00">                       About Me     </a> </center> </td>
+				<td> <center> <a href="./publications.html" style="color:yellow">                    Publications </a> </center> </td>
+				<td> <center> <a href="./pictures.html" style="color:#00FF00">                       Pictures     </a> </center> </td>
+				<td> <center> <a href="http://sese.asu.edu/people/alex-spacek" style="color:yellow"> My SESE Page </a> </center> </td>
+				<td> <center> <a href="./spacek_alex_cv.pdf" style="color:#00FF00">                  CV           </a> </center> </td>
+				<td> <center> <a href="./other.html" style="color:yellow">                           Other        </a> </center> </td>
+			</tr>
+		</table>
+	</center>
+
+	<center>
+		<table border="1" style="width:33.333%; table-layout:fixed">
+			<tr>
+				<td> <center> <a href="http://hopefulastro.blogspot.com/" style="color:yellow">          My Astrophysics Blog </a> </center> </td>
+				<td> <center> <a href="http://allthingsmeaningfull.blogspot.com/" style="color:#00FF00"> My Music Blog        </a> </center> </td>
+			</tr>
+		</table>
+	</center>
+
+	<h1x><center> <font color=#FFE5B4> IDL </font> </center></h1x>
+
+	<center> <p> <font color=#FFA6C9> The purpose of this page is to record some of the IDL tips and tricks I've found. </font> </p> </center>
+
+	<hr>
+
+	<h1> Tips </h1>
+
+	<ul>
+		<li> <p>
+			<b><i> <font color=#FFFF99> GDL: The Free Version Of IDL </font> </b></i> <br>
+			In case you didn't know, there is a free open-source version of IDL
+			called GDL (GNU Data Language).<br>
+			I use it a fair amount, it very nearly matches the functionality of IDL.<br>
+			Here is the website:<br>
+			<a href=http://gnudatalanguage.sourceforge.net/ style="color:#00FF00"> http://gnudatalanguage.sourceforge.net/ </a> <br>
+		</p> </li>
+
+		<li> <p>
+			<b><i> <font color=#FFFF99> Log Each IDL Session </font> </b></i> <br>
+			You can automatically log each IDL session in a file with the date
+			and time followed by a string you enter.<br>
+			Let's say you start a new IDL session on May 6 2015 at 2:25 PM. It
+			will prompt you for the string: <br>
+			Enter IDL journal sub-name:<br>
+			And you enter:<br>
+			general_work<br>
+			Then all of your input and output during that IDL session will
+			be logged in a file named "20150506_1425_general_work.jrn"<br>
+			The key is to set it up in your IDL startup file.<br>
+			Here is the code you would add:<br>
+			<a href=./IDL_programs/IDL_Startup_Log.pro style="color:#00FF00"> add_to_IDL_startup_file </a> <br>
+		</p> </li>
+
+		<li> <p>
+			<b><i> <font color=#FFFF99> Making IDL Plots In Color </font> </b></i> <br>
+			Allow color in IDL X-window: DEVICE, DECOMPOSED=0 <br>
+			Load rainbow+white color table: LOADCT, 39, /SILENT <br>
+			Set up some colors: <br>
+			black=0 <br>
+			darkpurple=15 <br>
+			purple=30 <br>
+			blue=56 <br>
+			lightblue=95 <br>
+			green=150 <br>
+			yellow=190 <br>
+			orange=203 <br>
+			red=254 <br>
+			white=255 <br>
+			Example plot: PLOT, xarray, yarray, COLOR=green
+		</p> </li>
+
+		<li> <p>
+			<b><i> <font color=#FFFF99> Optimal Histogram Binsize </font> </b></i> <br>
+			One way to automatically select a histogram bin size is using the Freedman-Diaconis rule. <br>
+			<a href="http://en.wikipedia.org/wiki/Freedman%E2%80%93Diaconis_rule" style="color:#00FF00"> Wikipedia link </a> <br>
+			Here is an IDL function I wrote to compute it: <br>
+			<a href=./IDL_programs/fdbinsize.pro style="color:#00FF00"> fdbinsize.pro </a> <br>
+			Example usage: histo = HISTOGRAM(array, BINSIZE=FDBINSIZE(array), LOCATIONS=xbins)
+		</p> </li>
+
+		<li> <p>
+			<b><i> <font color=#FFFF99> Multiple Plots In One IDL Window </font> </b></i> <br>
+			To do this, just set !p.multi = [<u>0</u>, <u>col</u>, <u>row</u>]. <br>
+			<u>0</u> means start a fresh window with the next plot command. <br>
+			<u>col</u> is the number of columns of plots. <br>
+			<u>row</u> is the number of rows of plots. <br>
+			To go back to a single plot, set !p.multi = 0.
+		</p> </li>
+	</ul>
+
+	<br>
+	<br>
+
+	<hr>
+
+	Page written by Alex Spacek.
+	<br>
+	Last update, May 6, 2015
+</body>
+</font>
+</html>
