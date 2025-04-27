@@ -121,7 +121,49 @@
 	<br><br>The first thing I'm going to post is a math trick that I really like. To me it's called 'taking a derivative under the integral.' I'm going to show how it works in the context of integrating the Planck function.
 	The Planck function is the 'spectral radiance' as a function of frequency (or wavelength), and it describes the radiation a blackbody at a certain temperature will emit.
 	'Spectral radiance' is a measure of energy, in units of W/m^2/Hz/sr (watts/meters^2/hertz/steradians, or, energy per time per area per frequency per solid angle). Here is the function:
-	<img src="./images/EQ01.png" alt="Planck function">
+	<br><img src="./images/EQ01.png" alt="Planck function">
+	<br>Integrating this function over all frequencies will give the total power per area per solid angle emitted by a blackbody at a certain temperature.
+	h*nu and k*T are both energies, and I'm going to assume that h*nu is much greater than k*T, so that (h*nu)/(k*T) is a large number, so that exp(h*nu/k/T) is a very large number, so that exp(h*nu/k/T) - 1 ~ exp(h*nu/k/T).
+	Now we have:
+	<br><img src="./images/EQ02.png" alt="Planck function simplified">
+	<br>Since we don't care about the constants until the end, let's arbitrarily have 2*h/c^2 = N and h/k/T = M. Now we have:
+	<br><img src="./images/EQ03.png" alt="Planck function simplified again">
+	<br>So, the integral we are concerned with is this:
+	<br><img src="./images/EQ04.png" alt="Planck function integral">
+	<br>Since N is a constant, we can take it out of the integral, and just add it back in at the end. Now we have:
+	<br><img src="./images/EQ05.png" alt="Planck function integral simplified">
+	<br>So, the idea is to add a variable in that we will make equal to 1 at the end, and take the derivative with respect to that variable so that the integral is simplified to something we can easily do.
+	I will add the variable alpha into the exponential, and keep in mind it will ultimately be equal to 1 so I'm not really changing anything:
+	<br><img src="./images/EQ06.png" alt="Adding alpha">
+	<br>Now, we want to take the derivative of this with respect to alpha so that it can replace what we currently have in the integral. Here are the steps:
+	<br><img src="./images/EQ07.png" alt="Derivative with alpha, step one">
+	<br><img src="./images/EQ08.png" alt="Derivative with alpha, step two">
+	<br><img src="./images/EQ09.png" alt="Derivative with alpha, step three">
+	<br>So, we're getting close to having what is in the integral. To fine tune it:
+	<br><img src="./images/EQ10.png" alt="Derivative with alpha, fine tuned">
+	<br>(Remember, alpha=1) So there we have it. Now we can substitute this into the integral:
+	<br><img src="./images/EQ11.png" alt="Integral with alpha">
+	<br>We can take the -1/M^3 out of the integral and put it back in later. We can also take the derivative out of the integral since it doesn't depend on nu. Now we have:
+	<br><img src="./images/EQ12.png" alt="Integral with alpha simplified">
+	<br>This integral is much simpler:
+	<br><img src="./images/EQ13.png" alt="Integral with alpha computed">
+	<br>Now, we do the derivative:
+	<br><img src="./images/EQ14.png" alt="Final alpha derivative, step one">
+	<br><img src="./images/EQ15.png" alt="Final alpha derivative, step two">
+	<br><img src="./images/EQ16.png" alt="Final alpha derivative, step three">
+	<br>So, I will put the N and the -1/M^3 back in:
+	<br><img src="./images/EQ17.png" alt="Putting N and M back in">
+	<br>Now, we set alpha=1 and plug in N=2*h/c^2 and M=h/k/T, and get our final result!
+	<br><img src="./images/EQ18.png" alt="Final result">
+	<br>There you have it. This seems like an overly long process when I explain it all like this, but once you get the hang of it you can do it all pretty quickly.
+	You could also have done 'integration by parts,' but personally I find this method easier and more straightforward.
+	<br><br>It also works for arbitrary exponentials:
+	<br><img src="./images/EQ19.png" alt="Arbitrary exponential">
+	<br>I'll leave it as an exercise to work it out yourself (heh ... it's fun, trust me!), but the solution is:
+	<br><img src="./images/EQ20.png" alt="Arbitrary exponential solution">
+	<br>This is just one case, too. I bet there are tons of situations where it would be possible to 'differentiate under the integral.'
+	It's just nice to keep in mind if you have a tough integral in front of you.
+	<br><br>That's all for my first post :)
 
 	<br><br><hr>
 
