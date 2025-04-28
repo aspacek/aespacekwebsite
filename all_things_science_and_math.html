@@ -1,6 +1,6 @@
 <!-- all_things_science_and_math.html //-->
 <!-- Alex Spacek's website all things science and math HTML file //-->
-<!-- Edited April 27 2025 //-->
+<!-- Edited April 28 2025 //-->
 
 <!DOCTYPE html>
 <html>
@@ -114,6 +114,34 @@
 
 	<br><br><hr>
 
+	<h1> Further Fun With the Planck Function, or, When All Else Fails Use Mathematica </h1>
+
+	This was originally posted on my science blog on September 11, 2013.
+	<br><br>In my last post I showed an integration trick by using the Planck function:
+	<br><img src="./images/EQ01b.png" alt="Planck function">
+	<br>To do so, I took the limit where h*nu >> k*T. This condition is valid for high frequencies (or probably less common, low temperatures). Then I could approximate it as this:
+	<br><img src="./images/EQ02b.png" alt="Planck function simplified">
+	<br>I forgot to mention that this is known as the Wien approximation. And after integrating I got the result:
+	<br><img src="./images/EQ03b.png" alt="Planck function simplified solution">
+	<br>Remember, my approximation was for high frequencies. Does it make sense to integrate over all frequencies? Maybe as an approximation, but it is important to keep valid limits in mind.
+	<br><br>Using Mathematica, I can integrate the exact Planck function:
+	<br>Mathematica> Integrate[2 h \[Nu]^3/c^2/(Exp[h \[Nu]/k/T] - 1), {\[Nu], 0, Infinity}]
+	<br>This gives the solution:
+	<br><img src="./images/EQ04b.png" alt="Planck function full solution">
+	<br>Notice that my factor was 12, while the correct factor should be 2*pi^4/15=12.9879.
+	<br>My approximation was close! But it was a little lower than the exact answer. I'm just trying to illustrate the importance of always thinking about the validity of your answers.
+	<br><br>I'm curious how one would analytically integrate the complete Planck function. I'm not sure myself.
+	<br><br>Now, what about the other possible limit, h*nu << k*T? Then we can do a Taylor expansion:
+	<br><img src="./images/EQ05b.png" alt="Taylor expansion">
+	<br>Around a=0 using the exponential term:
+	<br><img src="./images/EQ06b.png" alt="Taylor expansion">
+	<br>We can discard everything on the order of x^2 or higher since x is small. The whole equation becomes:
+	<br><img src="./images/EQ07b.png" alt="Taylor expansion">
+	<br>This is known as the Rayleigh–Jeans law. Notice how my integral over all frequencies would now be infinite? This was known as the 'ultraviolet catastrophe.'
+	These high-frequency and low-frequency approximations were what Planck used to ultimately formulate his function, valid at all frequencies.
+
+	<br><br><hr>
+
 	<h1> Taking the Derivative Under the Integral, or, First Post </h1>
 
 	This was originally posted on my science blog on September 10, 2013.
@@ -169,7 +197,7 @@
 
 	Page written by Alex Spacek.
 	<br>
-	Last update: April 27, 2025
+	Last update: April 28, 2025
 </body>
 </font>
 </html>
