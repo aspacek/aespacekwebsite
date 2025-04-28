@@ -114,6 +114,64 @@
 
 	<br><br><hr>
 
+	<h1> Full Integration of the Planck Function, or, Learning Something New </h1>
+
+	This was originally posted on my science blog on September 18, 2013.
+	<br><br>My last two posts have been about 'taking the derivative under the integral' and integrating the Planck function with different limits.
+	I previously stated that I didn't know how to integrate the complete Planck Function over all frequencies. Well, I've since looked it up, and now I do!
+	<br><br>Here's the integral to get the total radiance as a function of temperature for a blackbody, as discussed in my previous two posts:
+	<br><img src="./images/EQ01c.png" alt="Planck integral">
+	<br>Since we have an (h*nu)/(k*T) in the exponential, we want that same group of terms out in front, so we multiply everything by (h^2 k^3 T^3)/(h^2 k^3 T^3) and arrange them accordingly:
+	<br><img src="./images/EQ02c.png" alt="Planck integral simplified">
+	<br>Let x = (h*nu)/(k*T) so that dx/dnu = h/(k*T) and thus dnu = (k*T/h)*dx
+	<br>Now we plug x and dx in and get:
+	<br><img src="./images/EQ03c.png" alt="Planck integral with x substitute">
+	<br>Which becomes:
+	<br><img src="./images/EQ04c.png" alt="Planck integral with x substitute simplified">
+	<br>So, that first step reveals a good strategy for doing any tricky integral: try to simplify the integral as much as possible, in this case matching the x^3 with the e^x.
+	<br><br>Here is where things get a little tricky. I guess the advice for the next step would be to try and get rid of that 1/(e^x-1). You have to think: geometric series.
+	<br><br>The basic geometric series goes like:
+	<br><img src="./images/EQ05c.png" alt="Geometric series">
+	<br>Notice that our 1/(e^x-1) is similar in form. Let's try to manipulate it to look the same. First, let's say e^x=a for simplicity.
+	Now we mess around with 1/(a-1) to try and get something of the geometric series form 1/(1-x):
+	<br><img src="./images/EQ06c.png" alt="Trying to match geometric series form">
+	<br>There we go!
+	<br>Now we just substitute a^-1 where x is in the geometric series:
+	<br><img src="./images/EQ07c.png" alt="Geometric series match">
+	<br>Notice that the n=0 term in the series is equal to 1, a^-0=a^0=1, and this 1 will cancel out with the -1 at the end. We then just have the series starting at n=1.
+	Finally, we can plug the a=e^x back in! The whole process looks like this:
+	<br><img src="./images/EQ08c.png" alt="Using the geometric series">
+	<br>Let's plug it back into the integral! [NOTE: The next sum should go from n=1 to n=infinity, NOT n=0 to n=infinity. Sorry, typo, don't want to latex it all out again :) ]
+	<br><img src="./images/EQ09c.png" alt="Integral with geometric series">
+	<br>The sum can be taken out of the integral since it doesn't depend on x. We are now working with:
+	<br><img src="./images/EQ10c.png" alt="Integral with geometric series simplified">
+	<br>Does the integral look familiar? It should! It's a perfect 'derivative under the integral' integral!
+	<br>In my first post, I calculated a general exponential 'derivative under the integral' case. Recall:
+	<br><img src="./images/EQ11c.png" alt="Derivative under the integral example solution">
+	<br>What do you know, it looks just like our case! replace nu with x, n with 3, and A with n, and you get:
+	<br><img src="./images/EQ12c.png" alt="Using the derivative under the integral example solution">
+	<br>And, if I hadn't remembered that general formula, I could have easily taken the derivative under the integral again and figured it out!
+	<br>Let's plug this result back in to the full equation:
+	<br><img src="./images/EQ13c.png" alt="Integral incorporating everything">
+	<br>That sum we have now is actually so common that it has its own name, the Riemann zeta function.
+	<br>Riemann zeta functions have the form:
+	<br><img src="./images/EQ14c.png" alt="Riemann zeta function">
+	<br>These have specific solutions that you can easily look up. Our case is zeta(4), you'll notice.
+	<br><img src="./images/EQ15c.png" alt="Riemann zeta function, specific use">
+	<br>Plugging that in, we can get our final answer!
+	<br><img src="./images/EQ16c.png" alt="Final answer">
+	<br>There we go! You can check that we get the same answer I had gotten with Mathematica in my last post. But now I calculated it myself! Fun times.
+	<br><br>The moral of this story, I think, is, when facing a tricky integral, to simplify, look for mathematical series, Taylor expansions, or trig identities,
+	try to remember that things like Riemann zeta functions exist, and take the derivative under the integral!
+	<br><br>Just for fun, we can work this number out: pi=3.14 k(Boltzmann)=1.38×10^-23 m^2*kg/s^2/K, c=3.00x10^8 m/s, and h=6.63×10^-34 m^2*kg/s:
+	<br><img src="./images/EQ17c.png" alt="Final answer, plugging in values">
+	<br>The final line gives the physical units when T is measured in K. You'll find that W/m^2/Hz/sr is the same as kg/s^2.
+	<br><br>So now you can find the energy per time per area per frequency per solid angle for any blackbody of temperature T!
+	<br><br>From this equation, you can see that something with T = [1/(1.79x10^-8)]^(1/4) K will have a total radiance of 1 J/s/m^2/Hz/sr. That would be 86.45 K, or -304 degF or -187 degC.
+	<br><br>Our sun has T=5800 K. This gives it a radiance of 2x10^7 J/s/m^s/Hz/sr. That's a lot of energy!
+
+	<br><br><hr>
+
 	<h1> Further Fun With the Planck Function, or, When All Else Fails Use Mathematica </h1>
 
 	This was originally posted on my science blog on September 11, 2013.
